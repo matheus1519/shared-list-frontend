@@ -6,11 +6,7 @@ import { Container } from "./styles"
 
 import { api } from '@/services/api'
 
-interface INoteAreaProps{
-  
-}
-
-export const NoteArea: React.FC<INoteAreaProps> = ({}) => {
+export const NoteArea: React.FC = () => {
   const backendUrl = process.env.REACT_APP_API_BACKEND || ''
 
   const [note, setNote] = useState('')
