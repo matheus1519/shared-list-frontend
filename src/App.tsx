@@ -1,24 +1,22 @@
-import React from 'react';
+import React from 'react'
 
 import {
   BrowserRouter,
   Route,
-  Routes,
-} from "react-router-dom";
+  Routes
+} from 'react-router-dom'
 
-import { NoteArea } from './components/NoteArea';
+import { SharedList } from './pages/SharedList'
 
-import {GlobalStyles } from './styles/GlobalStyles'
-
+import { GlobalStyles } from './styles/GlobalStyles'
 
 export const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<NoteArea />} />
+        <Route path="/" element={<SharedList />} />
       </Routes>
       <GlobalStyles />
     </BrowserRouter>
-  );
+  )
 }
-
