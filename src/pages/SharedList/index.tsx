@@ -29,7 +29,6 @@ export const SharedList: React.FC = () => {
 
     loadInitialNotes()
   }, [])
-  // let navigate = useNavigate();
 
   useEffect(() => {
     const socket = io(backendUrl)
@@ -39,14 +38,12 @@ export const SharedList: React.FC = () => {
     })
   }, [])
 
-  console.log(list)
-
   const onChangeItem = (event: ChangeEvent<HTMLInputElement>) => {
     setItem(event.target.value)
   }
 
   const addItem = () => {
-    if (!item) {
+    if (!item.trim()) {
       return
     }
 
@@ -76,16 +73,24 @@ export const SharedList: React.FC = () => {
         <h1>Lista Compartilhada</h1>
         {list.length
           ? <ul>
-          {list.map((item, index) =>
-          <Item key={index} checked={item.checked}>
-            <li>{item.name}</li>
-            <input type="checkbox" checked={item.checked} onChange={(event) => onChangeDoneTask(event, index)} />
-          </Item>
-          )}
+          {list.map((item, index) => (
+            <Item key={index} checked={item.checked}>
+              <li>{item.name}</li>
+              <input
+                type="checkbox"
+                checked={item.checked}
+                onChange={(event) => onChangeDoneTask(event, index)}
+              />
+            </Item>
+          ))}
           </ul>
           : <h4>Nenhum item na lista</h4>
         }
-        <input placeholder="Digite um item..." type="text" value={item} onChange={onChangeItem}/>
+        <input
+          placeholder="Digite um item..."
+          type="text" value={item}
+          onChange={onChangeItem}
+        />
         <button type="submit" onClick={addItem}>Adicionar</button>
       </div>
     </Container>
